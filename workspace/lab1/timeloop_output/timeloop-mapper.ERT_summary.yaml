@@ -3,105 +3,105 @@ ERT_summary:
     table_summary:
       - name: system_arch_top_level.input_DRAM[1..1]
         actions:
-          - name: read
-            energy: 512.0
-          - name: leak
-            energy: 0.0
           - name: update
             energy: 512.0
           - name: write
+            energy: 512.0
+          - name: leak
+            energy: 0.0
+          - name: read
             energy: 512.0
         primitive_estimation(s):
           - name: system_arch_top_level.input_DRAM[1..1]
             estimator: CactiDRAM
       - name: system_arch_top_level.output_DRAM[1..1]
         actions:
-          - name: read
-            energy: 512.0
-          - name: leak
-            energy: 0.0
           - name: update
             energy: 512.0
           - name: write
+            energy: 512.0
+          - name: leak
+            energy: 0.0
+          - name: read
             energy: 512.0
         primitive_estimation(s):
           - name: system_arch_top_level.output_DRAM[1..1]
             estimator: CactiDRAM
       - name: system_arch_top_level.weight_DRAM[1..1]
         actions:
-          - name: read
-            energy: 512.0
-          - name: leak
-            energy: 0.0
           - name: update
             energy: 512.0
           - name: write
+            energy: 512.0
+          - name: leak
+            energy: 0.0
+          - name: read
             energy: 512.0
         primitive_estimation(s):
           - name: system_arch_top_level.weight_DRAM[1..1]
             estimator: CactiDRAM
       - name: system_arch_top_level.global_buffer[1..1]
         actions:
-          - name: read
-            energy: 3.38552
-          - name: leak
-            energy: 0.00014
           - name: update
             energy: 6.45356
           - name: write
             energy: 6.45356
+          - name: leak
+            energy: 0.000140432
+          - name: read
+            energy: 3.38552
         primitive_estimation(s):
           - name: system_arch_top_level.global_buffer[1..1]
             estimator: CactiSRAM
       - name: system_arch_top_level.scratchpad[1..1]
         actions:
           - name: read
-            energy: 0.226884
+            energy: 0.0918844
           - name: write
-            energy: 0.226884
+            energy: 0.0918844
           - name: update
-            energy: 0.226884
+            energy: 0.0918844
           - name: leak
-            energy: 0.001191
+            energy: 0.000140594
         primitive_estimation(s):
           - name: storage
             estimator: Aladdin_table
       - name: system_arch_top_level.weight_reg[1..1]
         actions:
           - name: read
-            energy: 0.009
+            energy: 0.144
           - name: write
-            energy: 0.009
+            energy: 0.144
           - name: update
-            energy: 0.009
+            energy: 0.144
           - name: leak
-            energy: 7e-05
+            energy: 0.00112
         primitive_estimation(s):
           - name: storage
             estimator: Aladdin_table
       - name: system_arch_top_level.input_reg[1..1]
         actions:
           - name: read
-            energy: 0.009
+            energy: 0.144
           - name: write
-            energy: 0.009
+            energy: 0.144
           - name: update
-            energy: 0.009
+            energy: 0.144
           - name: leak
-            energy: 7e-05
+            energy: 0.00112
         primitive_estimation(s):
           - name: storage
             estimator: Aladdin_table
       - name: system_arch_top_level.output_reg[1..1]
         actions:
           - name: read
-            energy: 0.009
+            energy: 0.144
           - name: write
-            energy: 0.009
+            energy: 0.144
           - name: update
-            energy: 0.009
+            energy: 0.144
           - name: leak
-            energy: 7e-05
+            energy: 0.00112
         primitive_estimation(s):
           - name: storage
             estimator: Aladdin_table

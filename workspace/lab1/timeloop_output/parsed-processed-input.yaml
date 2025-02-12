@@ -30,10 +30,10 @@ architecture:
                 global_cycle_seconds: 1e-9
                 power_gated_at: null
             required_actions:
-              - read
-              - leak
               - update
               - write
+              - leak
+              - read
             enabled: true
           - name: output_DRAM[1..1]
             class: DRAM
@@ -54,10 +54,10 @@ architecture:
                 global_cycle_seconds: 1e-9
                 power_gated_at: null
             required_actions:
-              - read
-              - leak
               - update
               - write
+              - leak
+              - read
             enabled: true
           - name: weight_DRAM[1..1]
             class: DRAM
@@ -78,10 +78,10 @@ architecture:
                 global_cycle_seconds: 1e-9
                 power_gated_at: null
             required_actions:
-              - read
-              - leak
               - update
               - write
+              - leak
+              - read
             enabled: true
           - name: global_buffer[1..1]
             class: SRAM
@@ -103,10 +103,10 @@ architecture:
                 global_cycle_seconds: 1e-9
                 power_gated_at: null
             required_actions:
-              - read
-              - leak
               - update
               - write
+              - leak
+              - read
             enabled: true
           - name: scratchpad[1..1]
             class: smart_storage
@@ -127,10 +127,10 @@ architecture:
                 global_cycle_seconds: 1e-9
                 power_gated_at: null
             required_actions:
-              - read
-              - leak
               - update
               - write
+              - leak
+              - read
             enabled: true
           - name: weight_reg[1..1]
             class: reg_storage
@@ -151,10 +151,10 @@ architecture:
                 global_cycle_seconds: 1e-9
                 power_gated_at: null
             required_actions:
-              - read
-              - leak
               - update
               - write
+              - leak
+              - read
             enabled: true
           - name: input_reg[1..1]
             class: reg_storage
@@ -175,10 +175,10 @@ architecture:
                 global_cycle_seconds: 1e-9
                 power_gated_at: null
             required_actions:
-              - read
-              - leak
               - update
               - write
+              - leak
+              - read
             enabled: true
           - name: output_reg[1..1]
             class: reg_storage
@@ -199,10 +199,10 @@ architecture:
                 global_cycle_seconds: 1e-9
                 power_gated_at: null
             required_actions:
-              - read
-              - leak
               - update
               - write
+              - leak
+              - read
             enabled: true
           - name: compute[1..1]
             class: mac_compute
@@ -233,8 +233,8 @@ architecture_constraints:
         target: input_DRAM
       - type: bypass
         bypass:
-          - Weights
           - Inputs
+          - Weights
         keep:
           - Outputs
         target: output_DRAM
@@ -244,8 +244,8 @@ architecture_constraints:
         target: output_DRAM
       - type: bypass
         bypass:
-          - Outputs
           - Inputs
+          - Outputs
         keep:
           - Weights
         target: weight_DRAM
@@ -278,8 +278,8 @@ architecture_constraints:
         target: weight_reg
       - type: bypass
         bypass:
-          - Outputs
           - Inputs
+          - Outputs
         keep:
           - Weights
         target: weight_reg
@@ -300,8 +300,8 @@ architecture_constraints:
         target: output_reg
       - type: bypass
         bypass:
-          - Weights
           - Inputs
+          - Weights
         keep:
           - Outputs
         target: output_reg

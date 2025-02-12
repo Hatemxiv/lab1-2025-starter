@@ -1,0 +1,188 @@
+'1.0':
+  What is your Banner ID?: B01966838
+  What is your email address?: hatem_mohamed@brown.edu
+  What is your name?: Hatem Mohamed
+'1.1':
+  ? "\n    The training accuracy is always a good indicator of the model performance
+    on\n    unseen data.\n    "
+  : 'False'
+  ? "\n    The white-with-black-background images are from the _____ distribution\n\
+    \    compared to your training and testing data.\n    "
+  : Different
+  ? "\n    Which accuracy is the better indicator of the model performance on unseen\n\
+    \    data?\n    "
+  : Test Accuracy
+  ? "\n    You have trained and tested the model on images give with white digits
+    on a\n    black background. However, you now want to use the model to classify
+    images\n    with black digits on a white background. How would you expect the
+    model's\n    accuracy to change?\n    "
+  : Accuracy Decrease
+'1.2':
+  What do the conv1 filters look like? Are there (or are there not) any discernable patterns?: Yes,
+    there are edge detectors
+  What is the test accuracy of the model?: 0.9875
+  What is the training accuracy of the model?: 0.9951
+  What is the validation accuracy of the model?: 0.9825
+  What number is shown in the first (index 0) image?: 7
+'2.1':
+  What is your implementation of the conv function?: "def conv(x, W, b):\n    # DO
+    NOT USE ANY LIBRARY CONVOLUTION FUNCTIONS. WRITE YOUR OWN LOOP NEST.\n    if np.ndim(x)
+    == 2:\n        x = np.expand_dims(x, axis=0)\n    assert np.ndim(x) == 3\n   \
+    \ C_in, M, N = x.shape\n    C_out, C_t, Kx, Ky = W.shape\n    assert C_in == C_t,
+    \"activation and weight dimension mismatch!\"\n    \n    # Assume this padding\n\
+    \    x_padded = np.pad(x, ((0, 0), (Kx//2, Kx//2), (Ky//2, Ky//2)))\n    \n  \
+    \  # define the output M*N and Cout channels assuming the stride was 1\n    output
+    = np.zeros((C_out, M, N))\n\n    for co in range(C_out):  # Output channels\n\
+    \        for i in range(M):   # Rows\n            for j in range(N):  # Columns\n\
+    \                sum_val = 0\n                for ci in range(C_in):  # Input
+    channels\n                    for kx in range(Kx):\n                        for
+    ky in range(Ky):\n                            sum_val += x_padded[ci, i + kx,
+    j + ky] * W[co, ci, kx, ky]\n                output[co, i, j] = sum_val + b[co]\
+    \  # Store result in output\n\n    return output\n"
+  What is your implementation of the fc function?: "def fc(x, W, b):\n    # DO NOT
+    USE ANY LIBRARY MATRIX MULTIPLICATION FUNCTIONS. WRITE YOUR OWN LOOP NEST.\n \
+    \   # Your code here\n    M= len(x)\n    N= len(b)\n    output = np.zeros(N)\n\
+    \    assert W.shape == (N, M), \"Mismatch! can't do it\"\n    \n    for i in range(N):\n\
+    \        sum_val =0\n        for j in range(M):\n            sum_val+= W[i,j]*x[j]\n\
+    \        output[i] = sum_val + b[i]\n    return output\n"
+  What is your implementation of the flatten function?: "def flatten(x):\n    C, M,
+    N = x.shape  # Correctly extract shape from x\n    dim = C * M * N  # Total number
+    of elements\n    output = np.zeros(dim)  # Initialize flattened output\n\n   \
+    \ # Flattening loop\n    index = 0  # Keeps track of 1D index\n    for c in range(C):\n\
+    \        for i in range(M):\n            for j in range(N):\n                output[index]
+    = x[c, i, j]  # Store value in output\n                index += 1  # Increment
+    1D index\n\n    return output\n"
+  What is your implementation of the pool2 function?: "def pool2(x, dh, dw):\n   \
+    \ # DO NOT USE ANY LIBRARY POOLING FUNCTIONS. WRITE YOUR OWN LOOP NEST.\n    #
+    Your code here\n    C,H,W = x.shape\n    assert (H% dh==0) and (W%dw==0) #make
+    sure it is divisible\n    h_out=H//dh\n    w_out=W//dw\n    output = np.zeros((C,h_out,
+    w_out))\n    for c in range(C):\n        for i in range(h_out):\n            for
+    j in range(w_out):\n                h_start= dh*i\n                h_end= dh*(i+1)\n\
+    \                w_start= dw*j\n                w_end= dw*(j+1)\n            \
+    \    output[c,i,j]= np.max(x[c,h_start:h_end,w_start:w_end])\n    return output\n"
+  What is your implementation of the relu function?: "def relu(x):\n    output = np.zeros_like(x)\
+    \  # Preserve shape\n    for idx in np.ndindex(x.shape):  # Iterate over all elements\n\
+    \        output[idx] = max(0, x[idx])  # Apply ReLU\n    return output\n"
+'2.2':
+  What is the accuracy of your implementation?: 98
+'2.3':
+  What are the parameters of layer 1?:
+  - 5
+  - 5
+  - 1
+  - 4
+  What are the parameters of layer 2?: []
+  What are the parameters of layer 3?:
+  - 2
+  - 2
+  - 2
+  - 2
+  What are the parameters of layer 4?:
+  - 5
+  - 5
+  - 4
+  - 8
+  What are the parameters of layer 5?: []
+  What are the parameters of layer 6?:
+  - 2
+  - 2
+  - 2
+  - 2
+  What are the parameters of layer 7?:
+  - 256
+  - 392
+  What are the parameters of layer 8?: []
+  What are the parameters of layer 9?:
+  - 10
+  - 256
+  What is the layer type of layer 1?: conv
+  What is the layer type of layer 2?: relu
+  What is the layer type of layer 3?: pool
+  What is the layer type of layer 4?: conv
+  What is the layer type of layer 5?: relu
+  What is the layer type of layer 6?: pool
+  What is the layer type of layer 7?: fc
+  What is the layer type of layer 8?: relu
+  What is the layer type of layer 9?: fc
+  What is the size of the input to the network?:
+  - 1
+  - 1
+  - 28
+  - 28
+'2.4':
+  What is the output size of layer 1?:
+  - 1
+  - 4
+  - 28
+  - 28
+  What is the output size of layer 2?:
+  - 1
+  - 4
+  - 28
+  - 28
+  What is the output size of layer 3?:
+  - 1
+  - 4
+  - 14
+  - 14
+  What is the output size of layer 4?:
+  - 1
+  - 8
+  - 14
+  - 14
+  What is the output size of layer 5?:
+  - 1
+  - 8
+  - 14
+  - 14
+  What is the output size of layer 6?:
+  - 1
+  - 8
+  - 7
+  - 7
+  What is the output size of layer 7?:
+  - 1
+  - 256
+  - 1
+  - 1
+  What is the output size of layer 8?:
+  - 1
+  - 256
+  - 1
+  - 1
+  What is the output size of layer 9?:
+  - 1
+  - 10
+  - 1
+  - 1
+'2.5':
+  How many weights are there in layer 1?: 100
+  How many weights are there in layer 2?: 0
+  How many weights are there in layer 3?: 0
+  How many weights are there in layer 4?: 800
+  How many weights are there in layer 5?: 0
+  How many weights are there in layer 6?: 0
+  How many weights are there in layer 7?: 100352
+  How many weights are there in layer 8?: 0
+  How many weights are there in layer 9?: 2560
+'2.6':
+  How many multiplications are there in layer 1?: 78400
+  How many multiplications are there in layer 2?: 0
+  How many multiplications are there in layer 3?: 0
+  How many multiplications are there in layer 4?: 156800
+  How many multiplications are there in layer 5?: 0
+  How many multiplications are there in layer 6?: 0
+  How many multiplications are there in layer 7?: 100352
+  How many multiplications are there in layer 8?: 0
+  How many multiplications are there in layer 9?: 2560
+'2.7':
+  What is the compute intensity of layer {index + 1}?: 0.9058740268931351
+  what is the compute intensity of layer 1?: 1
+  what is the compute intensity of layer 2?: 1
+  what is the compute intensity of layer 3?: 1
+  what is the compute intensity of layer 4?: 1
+  what is the compute intensity of layer 5?: 1
+  what is the compute intensity of layer 6?: 1
+  what is the compute intensity of layer 7?: 1
+  what is the compute intensity of layer 8?: 1
+  what is the compute intensity of layer 9?: 1
